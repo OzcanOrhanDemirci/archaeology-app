@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../core/models.dart';
 
-class HorizontalTimeline extends StatelessWidget {
+class HorizontalTimeline extends StatefulWidget {
   final List<TimelineEntry> entries;
   final int selectedIndex;
   final ValueChanged<int> onItemTap;
@@ -14,7 +14,55 @@ class HorizontalTimeline extends StatelessWidget {
   });
 
   @override
+  State<HorizontalTimeline> createState() => _HorizontalTimelineState();
+}
+
+class _HorizontalTimelineState extends State<HorizontalTimeline> {
+  final List<GlobalKey> _chipKeys = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _syncChipKeys();
+  }
+
+  @override
+  void didUpdateWidget(covariant HorizontalTimeline oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _syncChipKeys();
+    if (widget.selectedIndex != oldWidget.selectedIndex) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _bringSelectedChipIntoView();
+      });
+    }
+  }
+
+  void _syncChipKeys() {
+    while (_chipKeys.length < widget.entries.length) {
+      _chipKeys.add(GlobalKey());
+    }
+    while (_chipKeys.length > widget.entries.length) {
+      _chipKeys.removeLast();
+    }
+  }
+
+  /// Keeps the selected dot visible when the selection changes from
+  /// content scrolling rather than a tap on the timeline itself.
+  void _bringSelectedChipIntoView() {
+    final int index = widget.selectedIndex;
+    if (index < 0 || index >= _chipKeys.length) return;
+    final BuildContext? chipContext = _chipKeys[index].currentContext;
+    if (chipContext == null || !mounted) return;
+    Scrollable.ensureVisible(
+      chipContext,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final List<TimelineEntry> entries = widget.entries;
     final Color themeColor = Theme.of(context).iconTheme.color!;
     final Color lineColor = Theme.of(context).dividerColor;
 
@@ -34,13 +82,14 @@ class HorizontalTimeline extends StatelessWidget {
               final entryIndex = index ~/ 2;
               final entry = entries[entryIndex];
               final bool isYearZero = entry.isYearZero;
-              final bool isSelected = entryIndex == selectedIndex;
+              final bool isSelected = entryIndex == widget.selectedIndex;
               final bool isClickable = entry.key != null;
 
               return GestureDetector(
+                key: _chipKeys[entryIndex],
                 onTap: isClickable
                     ? () {
-                  onItemTap(entryIndex);
+                  widget.onItemTap(entryIndex);
                   if (entry.key?.currentContext != null) {
                     Scrollable.ensureVisible(
                       entry.key!.currentContext!,

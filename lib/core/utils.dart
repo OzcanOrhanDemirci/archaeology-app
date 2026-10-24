@@ -1,5 +1,21 @@
 import 'package:flutter/material.dart';
 
+/// Picks the timeline entry matching the content on screen.
+///
+/// [blockTops] lists the vertical offsets of the blocks in timeline
+/// order; entries without a block pass [double.infinity] and are
+/// skipped. The winner is the last block whose top edge sits above
+/// [viewportCenter]. Returns 0 when no block qualifies yet.
+int selectTimelineIndex(List<double> blockTops, double viewportCenter) {
+  int selected = -1;
+  for (int i = 0; i < blockTops.length; i++) {
+    if (blockTops[i] <= viewportCenter) {
+      selected = i;
+    }
+  }
+  return selected < 0 ? 0 : selected;
+}
+
 /// Displays a zoomable full-screen image dialog.
 void showFullImage(BuildContext context, String imagePath) {
   showDialog(

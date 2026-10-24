@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../state/state.dart';
 import '../core/models.dart';
@@ -20,6 +22,13 @@ class UniversalSiteScreen extends StatefulWidget {
 class _UniversalSiteScreenState extends State<UniversalSiteScreen> {
   int _currentTimelineIndex = 0;
   final Map<String, GlobalKey> _blockKeys = {};
+  Timer? _programmaticScrollGuard;
+
+  @override
+  void dispose() {
+    _programmaticScrollGuard?.cancel();
+    super.dispose();
+  }
 
   GlobalKey _getKeyForId(String id) {
     if (!_blockKeys.containsKey(id)) {
@@ -114,7 +123,49 @@ class _UniversalSiteScreenState extends State<UniversalSiteScreen> {
           setState(() {
             _currentTimelineIndex = index;
           });
+          // Suppress scroll-driven selection while ensureVisible animates
+          // to the tapped block, so intermediate blocks do not flicker
+          // the selection.
+          _programmaticScrollGuard?.cancel();
+          _programmaticScrollGuard =
+              Timer(const Duration(milliseconds: 850), () {});
         },
+      );
+    }
+
+    /// Updates the selected timeline entry from the scroll position:
+    /// the last block whose top edge is above the viewport center wins.
+    bool onContentScroll(ScrollNotification notification) {
+      if (_programmaticScrollGuard?.isActive ?? false) return false;
+      if (notification is! ScrollUpdateNotification &&
+          notification is! ScrollEndNotification) {
+        return false;
+      }
+      final RenderBox? viewportBox =
+          notification.context?.findRenderObject() as RenderBox?;
+      if (viewportBox == null || !viewportBox.attached) return false;
+      final double centerDy = viewportBox
+          .localToGlobal(Offset(0, viewportBox.size.height / 2))
+          .dy;
+
+      final List<double> tops = timelineEntries.map((entry) {
+        final RenderBox? box =
+            entry.key?.currentContext?.findRenderObject() as RenderBox?;
+        if (box == null || !box.attached) return double.infinity;
+        return box.localToGlobal(Offset.zero).dy;
+      }).toList();
+
+      final int newIndex = selectTimelineIndex(tops, centerDy);
+      if (newIndex != _currentTimelineIndex) {
+        setState(() => _currentTimelineIndex = newIndex);
+      }
+      return false;
+    }
+
+    Widget withScrollSync(Widget scrollableContent) {
+      return NotificationListener<ScrollNotification>(
+        onNotification: onContentScroll,
+        child: scrollableContent,
       );
     }
 
@@ -155,7 +206,7 @@ class _UniversalSiteScreenState extends State<UniversalSiteScreen> {
               return Column(
                 children: [
                   buildTimeline(),
-                  Expanded(child: contentWidget),
+                  Expanded(child: withScrollSync(contentWidget)),
                 ],
               );
             } else {
@@ -170,7 +221,8 @@ class _UniversalSiteScreenState extends State<UniversalSiteScreen> {
           children: [
             buildTimeline(),
             Expanded(
-              child: SingleChildScrollView(
+              child: withScrollSync(
+                SingleChildScrollView(
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,6 +242,7 @@ class _UniversalSiteScreenState extends State<UniversalSiteScreen> {
                     const SizedBox(height: 40),
                   ],
                 ),
+              ),
               ),
             ),
           ],
