@@ -30,6 +30,13 @@ final Map<String, Map<String, String>> localizedStrings = {
     'favorites_empty': 'You have not added any sites to your favorites yet.',
 
     // Site Listing Items
+    'region_all': 'All',
+    'region_marmara': 'Marmara',
+    'region_aegean': 'Aegean',
+    'region_mediterranean': 'Mediterranean',
+    'region_central': 'Central Anatolia',
+    'region_east': 'Eastern Anatolia',
+    'region_seast': 'Southeastern Anatolia',
     'site_ephesus_name': 'Ephesus',
     'site_ephesus_sub': 'Stratigraphic Depths',
     'site_pergamon_name': 'Pergamon',
@@ -216,6 +223,13 @@ final Map<String, Map<String, String>> localizedStrings = {
     'favorites_empty': 'Henüz favorilerinize bir alan eklemediniz.',
 
     // Site Listesi
+    'region_all': 'Tümü',
+    'region_marmara': 'Marmara',
+    'region_aegean': 'Ege',
+    'region_mediterranean': 'Akdeniz',
+    'region_central': 'İç Anadolu',
+    'region_east': 'Doğu Anadolu',
+    'region_seast': 'Güneydoğu Anadolu',
     'site_ephesus_name': 'Efes',
     'site_ephesus_sub': 'Stratigrafik Derinlikler',
     'site_pergamon_name': 'Pergamon (Bergama)',

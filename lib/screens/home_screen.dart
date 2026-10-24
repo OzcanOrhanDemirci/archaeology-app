@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String _searchQuery = '';
+  String? _selectedRegion;
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -30,6 +31,39 @@ class _HomeScreenState extends State<HomeScreen> {
         .replaceAll('ş', 's').replaceAll('ğ', 'g').replaceAll('ı', 'i').replaceAll('İ', 'i');
   }
 
+  /// Regions that actually contain at least one site, in map order.
+  List<String> get _presentRegions {
+    final seen = <String>{};
+    for (final site in globalSiteData) {
+      seen.add(site.regionKey);
+    }
+    return seen.toList();
+  }
+
+  Widget _buildRegionChip(BuildContext context, AppStateProvider provider, String? regionKey) {
+    final bool selected = _selectedRegion == regionKey;
+    final texts = localizedStrings[provider.locale.languageCode]!;
+    final String label = regionKey == null
+        ? texts['region_all']!
+        : texts['region_$regionKey'] ?? regionKey;
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: ChoiceChip(
+        label: Text(label),
+        selected: selected,
+        showCheckmark: false,
+        selectedColor: Theme.of(context).iconTheme.color,
+        labelStyle: TextStyle(
+          color: selected ? Colors.white : Theme.of(context).textTheme.bodyMedium?.color,
+          fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+        ),
+        onSelected: (_) => setState(() {
+          _selectedRegion = selected ? null : regionKey;
+        }),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = AppStateProvider.of(context);
@@ -37,6 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<String> favoriteIds = provider.favoriteSiteIds;
 
     final filteredSites = globalSiteData.where((site) {
+      if (_selectedRegion != null && site.regionKey != _selectedRegion) {
+        return false;
+      }
       final texts = localizedStrings[lang]!;
       final query = _normalizeText(_searchQuery);
       final name = _normalizeText(texts[site.nameKey]!);
@@ -66,6 +103,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 contentPadding: const EdgeInsets.symmetric(vertical: 0),
               ),
               onChanged: (value) => setState(() => _searchQuery = value),
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Row(
+              children: [
+                _buildRegionChip(context, provider, null),
+                for (final region in _presentRegions)
+                  _buildRegionChip(context, provider, region),
+              ],
             ),
           ),
           Expanded(

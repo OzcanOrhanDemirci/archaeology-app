@@ -33,6 +33,19 @@ void main() {
     }
   });
 
+  test('every site belongs to a known, localized region', () {
+    const knownRegions = {'marmara', 'aegean', 'mediterranean', 'central', 'east', 'seast'};
+    for (final lang in const ['en', 'tr']) {
+      final texts = localizedStrings[lang]!;
+      for (final meta in globalSiteData) {
+        expect(knownRegions, contains(meta.regionKey),
+            reason: '${meta.id} has unknown region ${meta.regionKey}');
+        expect(texts['region_${meta.regionKey}'], isNotNull,
+            reason: '$lang lacks a label for region ${meta.regionKey}');
+      }
+    }
+  });
+
   test('english and turkish define the same non-empty string keys', () {
     final en = localizedStrings['en']!;
     final tr = localizedStrings['tr']!;

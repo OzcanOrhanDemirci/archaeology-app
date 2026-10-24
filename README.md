@@ -15,6 +15,7 @@
 * **Two-Way Timeline:** Tapping a period on the `HorizontalTimeline` scrolls to its content, and scrolling the content updates the selected period.
 * **Dynamic Theme Engine:** Features **8 distinct color flavors** (e.g., *Soft Denim, Imperial Purple, Amber Forest*) based on the "60-30-10" color rule.
 * **Bilingual Support:** Full English and Turkish support with instant language switching via `localization.dart` .
+* **Region Filters:** Choice chips on the home screen narrow the list by modern geographic region (Aegean, Mediterranean, Central Anatolia, ...).
 * **Custom Timeline:** An interactive `HorizontalTimeline` widget to navigate through historical periods .
 
 ## 🛠️ Technical Architecture
