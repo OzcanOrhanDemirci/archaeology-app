@@ -11,7 +11,7 @@ import 'package:archaeology_app/data/sites.dart';
 /// have a registry entry, localized strings for both languages, valid
 /// timeline references, and image files that actually exist on disk.
 void main() {
-  final List<String> siteIds = globalSiteData.map((m) => m['id']!).toList();
+  final List<String> siteIds = globalSiteData.map((m) => m.id).toList();
 
   test('site metadata and registry cover exactly the same sites', () {
     expect(siteIds, hasLength(21));
@@ -22,12 +22,12 @@ void main() {
     for (final lang in const ['en', 'tr']) {
       final texts = localizedStrings[lang]!;
       for (final meta in globalSiteData) {
-        for (final key in ['name_key', 'subtitle_key', 'desc_key']) {
-          final value = texts[meta[key]!];
+        for (final key in [meta.nameKey, meta.subtitleKey, meta.descKey]) {
+          final value = texts[key];
           expect(value, isNotNull,
-              reason: '$lang is missing ${meta[key]} for ${meta['id']}');
+              reason: '$lang is missing $key for ${meta.id}');
           expect(value, isNotEmpty,
-              reason: '$lang has an empty ${meta[key]} for ${meta['id']}');
+              reason: '$lang has an empty $key for ${meta.id}');
         }
       }
     }

@@ -16,7 +16,7 @@ class FavoritesScreen extends StatelessWidget {
     final List<String> favoriteIds = provider.favoriteSiteIds;
 
     final favoriteSites = globalSiteData
-        .where((site) => favoriteIds.contains(site['id']))
+        .where((site) => favoriteIds.contains(site.id))
         .toList();
 
     return Scaffold(
@@ -70,14 +70,14 @@ class FavoritesScreen extends StatelessWidget {
         itemCount: favoriteSites.length,
         itemBuilder: (context, index) {
           final site = favoriteSites[index];
-          final bool isFavorite = favoriteIds.contains(site['id']!);
+          final bool isFavorite = favoriteIds.contains(site.id);
 
           return AppClickable(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UniversalSiteScreen(siteId: site['id']!),
+                  builder: (context) => UniversalSiteScreen(siteId: site.id),
                 ),
               );
             },
@@ -88,10 +88,10 @@ class FavoritesScreen extends StatelessWidget {
               elevation: 2.0,
               child: ListTile(
                 enabled: false,
-                leading: Icon(Icons.account_balance,
+                leading: Icon(site.icon,
                     color: Theme.of(context).iconTheme.color),
                 title: Text(
-                  localizedStrings[lang]![site['name_key']!]!,
+                  localizedStrings[lang]![site.nameKey]!,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -99,7 +99,7 @@ class FavoritesScreen extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  localizedStrings[lang]![site['subtitle_key']!]!,
+                  localizedStrings[lang]![site.subtitleKey]!,
                   style: TextStyle(fontSize: 14, color: Theme.of(context).textTheme.bodyMedium?.color),
                 ),
                 trailing: IconButton(
@@ -112,7 +112,7 @@ class FavoritesScreen extends StatelessWidget {
                         : Colors.grey,
                   ),
                   onPressed: () {
-                    provider.toggleFavorite(site['id']!);
+                    provider.toggleFavorite(site.id);
                   },
                 ),
               ),

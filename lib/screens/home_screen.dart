@@ -17,30 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String _searchQuery = '';
   final TextEditingController _searchController = TextEditingController();
 
-  final Map<String, IconData> _siteIcons = {
-    'ephesus': Icons.account_balance,
-    'pergamon': Icons.terrain,
-    'troy': Icons.shield,
-    'hierapolis': Icons.pool,
-    'aspendos': Icons.stadium,
-    'perge': Icons.accessibility_new,
-    'aphrodisias': Icons.favorite,
-    'hattusa': Icons.castle,
-    'nemrut': Icons.landscape,
-    'xanthos': Icons.foundation,
-    'miletus': Icons.grid_on,
-    'gobeklitepe': Icons.wb_sunny,
-    'priene': Icons.grid_4x4,
-    'sagalassos': Icons.cloud,
-    'side': Icons.anchor,
-    'didyma': Icons.visibility,
-    'sardis': Icons.monetization_on,
-    'kaunos': Icons.bedtime,
-    'myra': Icons.card_giftcard,
-    'laodicea': Icons.bolt,
-    'termessos': Icons.terrain,
-  };
-
   @override
   void dispose() {
     _searchController.dispose();
@@ -60,8 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<String> favoriteIds = provider.favoriteSiteIds;
 
     final filteredSites = globalSiteData.where((site) {
-      final siteName = localizedStrings[lang]![site['name_key']!]!;
-      return _normalizeText(siteName).contains(_normalizeText(_searchQuery));
+      final texts = localizedStrings[lang]!;
+      final query = _normalizeText(_searchQuery);
+      final name = _normalizeText(texts[site.nameKey]!);
+      final desc = _normalizeText(texts[site.descKey]!);
+      return name.contains(query) || desc.contains(query);
     }).toList();
 
     return Scaffold(
@@ -114,22 +93,23 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: filteredSites.length,
               itemBuilder: (context, index) {
                 final site = filteredSites[index];
-                final bool isFavorite = favoriteIds.contains(site['id']!);
-                final IconData siteIcon = _siteIcons[site['id']] ?? Icons.account_balance;
+                final bool isFavorite = favoriteIds.contains(site.id);
+                final String siteName = localizedStrings[lang]![site.nameKey]!;
+                final String siteSubtitle = localizedStrings[lang]![site.subtitleKey]!;
 
                 return AppClickable(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UniversalSiteScreen(siteId: site['id']!))),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UniversalSiteScreen(siteId: site.id))),
                   child: Card(
                     color: Theme.of(context).cardColor,
                     margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                     child: ListTile(
                       enabled: false,
-                      leading: Icon(siteIcon, size: 32, color: Theme.of(context).iconTheme.color),
-                      title: Text(localizedStrings[lang]![site['name_key']!]!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Theme.of(context).textTheme.bodyLarge?.color)),
-                      subtitle: Text(localizedStrings[lang]![site['subtitle_key']!]!, style: TextStyle(fontSize: 14, color: Theme.of(context).textTheme.bodyMedium?.color)),
+                      leading: Icon(site.icon, size: 32, color: Theme.of(context).iconTheme.color),
+                      title: Text(siteName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Theme.of(context).textTheme.bodyLarge?.color)),
+                      subtitle: Text(siteSubtitle, style: TextStyle(fontSize: 14, color: Theme.of(context).textTheme.bodyMedium?.color)),
                       trailing: IconButton(
                         icon: Icon(isFavorite ? Icons.bookmark_added : Icons.bookmark_add_outlined, color: isFavorite ? Theme.of(context).iconTheme.color : Colors.grey),
-                        onPressed: () => provider.toggleFavorite(site['id']!),
+                        onPressed: () => provider.toggleFavorite(site.id),
                       ),
                     ),
                   ),
