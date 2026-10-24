@@ -2,41 +2,58 @@ import 'package:flutter/material.dart';
 import '../core/utils.dart';
 
 /// Displays an image block with a title and descriptive text.
+/// Blocks without an image render a decorative rule instead.
 class SiteContentBlock extends StatelessWidget {
   final GlobalKey? blockKey;
-  final String imagePath;
+  final String? imagePath;
   final String title;
   final String text;
 
   const SiteContentBlock({
     super.key,
     this.blockKey,
-    required this.imagePath,
+    this.imagePath,
     required this.title,
     required this.text,
   });
 
   @override
   Widget build(BuildContext context) {
+    final Color themeColor = Theme.of(context).iconTheme.color!;
     return Padding(
       key: blockKey,
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GestureDetector(
-            onTap: () => showFullImage(context, imagePath),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12.0),
-              child: Image.asset(
-                imagePath,
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
+          if (imagePath != null) ...[
+            GestureDetector(
+              onTap: () => showFullImage(context, imagePath!),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: Image.asset(
+                  imagePath!,
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 24),
+            const SizedBox(height: 24),
+          ] else ...[
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(child: Divider(color: themeColor.withValues(alpha: 0.4))),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Icon(Icons.location_on_outlined, size: 20, color: themeColor.withValues(alpha: 0.8)),
+                ),
+                Expanded(child: Divider(color: themeColor.withValues(alpha: 0.4))),
+              ],
+            ),
+            const SizedBox(height: 24),
+          ],
           Text(
             title,
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),

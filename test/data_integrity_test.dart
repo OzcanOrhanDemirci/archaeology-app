@@ -84,8 +84,9 @@ void main() {
         for (final section in site.sections) {
           for (final content in section.content) {
             if (content is ContentBlockModel) {
-              if (!File(content.imagePath).existsSync()) {
-                missing.add(content.imagePath);
+              final image = content.imagePath;
+              if (image != null && !File(image).existsSync()) {
+                missing.add(image);
               }
             } else if (content is AnalysisSectionModel) {
               final image = content.mainImage;

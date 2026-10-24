@@ -18,15 +18,16 @@ enum AppThemeFlavor {
 abstract class SiteContent {}
 
 /// Represents the standard image + title + text block.
+/// Blocks without bundled photography render text-first.
 class ContentBlockModel extends SiteContent {
   final String id;
-  final String imagePath;
+  final String? imagePath;
   final String title;
   final String text;
 
   ContentBlockModel({
     required this.id,
-    required this.imagePath,
+    this.imagePath,
     required this.title,
     required this.text,
   });
