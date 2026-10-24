@@ -32,10 +32,15 @@ class AppDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).appBarTheme.backgroundColor,
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+              // Scales the header content down on short drawers instead of
+              // overflowing them.
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
                   Container(
                     width: 80,
@@ -66,7 +71,8 @@ class AppDrawer extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
+                  ],
+                ),
               ),
             ),
 
@@ -88,10 +94,7 @@ class AppDrawer extends StatelessWidget {
                 context,
                 Icons.location_on,
                 texts['drawer_sites']!,
-                    () {
-                  Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
-                }
+                    () => _navigateTo(context, const HomeScreen())
             ),
 
 
@@ -99,10 +102,7 @@ class AppDrawer extends StatelessWidget {
                 context,
                 Icons.book,
                 texts['drawer_glossary']!,
-                    () {
-                  Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const GlossaryScreen()));
-                }
+                    () => _navigateTo(context, const GlossaryScreen())
             ),
 
 
@@ -110,10 +110,7 @@ class AppDrawer extends StatelessWidget {
                 context,
                 Icons.info,
                 texts['drawer_about']!,
-                    () {
-                  Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutScreen()));
-                }
+                    () => _navigateTo(context, const AboutScreen())
             ),
 
 
@@ -121,10 +118,7 @@ class AppDrawer extends StatelessWidget {
                 context,
                 Icons.settings,
                 texts['drawer_settings']!,
-                    () {
-                  Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsScreen()));
-                }
+                    () => _navigateTo(context, const SettingsScreen())
             ),
 
             const Divider(),
@@ -140,6 +134,18 @@ class AppDrawer extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  /// Closes the drawer and replaces every route above the splash root,
+  /// keeping the navigation stack at a fixed depth no matter how many
+  /// drawer items the user opens in a row.
+  void _navigateTo(BuildContext context, Widget screen) {
+    Navigator.pop(context);
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => screen),
+      (route) => route.isFirst,
     );
   }
 
