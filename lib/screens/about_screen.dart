@@ -48,6 +48,12 @@ class AboutScreen extends StatelessWidget {
                   Divider(color: dividerColor, thickness: 1),
                   const SizedBox(height: 30),
                   Text(texts['about_desc']!, textAlign: TextAlign.center, style: TextStyle(fontSize: 16, height: 1.6, color: textColor.withValues(alpha: 0.9))),
+                  const SizedBox(height: 16),
+                  Text(
+                    texts['about_update_note']!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 12, height: 1.5, color: textColor.withValues(alpha: 0.6), fontStyle: FontStyle.italic),
+                  ),
                   const SizedBox(height: 30),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

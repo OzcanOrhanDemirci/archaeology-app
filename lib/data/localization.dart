@@ -16,7 +16,7 @@ final Map<String, Map<String, String>> localizedStrings = {
     // Drawer & Navigation & Menu
     'menu_title': 'Main Menu',
     'menu_exit': 'Exit Application',
-    'menu_version_text': 'v1.1 • Academic Capstone Release',
+    'menu_version_text': 'v1.1.1 • Academic Capstone Release',
     'drawer_header': 'Anatolia Heritage',
     'drawer_sites': 'Site List',
     'drawer_about': 'About the Project',
@@ -109,7 +109,8 @@ final Map<String, Map<String, String>> localizedStrings = {
     'about_content_name': 'Berkay Gülbeyaz',
     'about_content_role': 'Archaeological Content & Research',
     'about_desc': 'This project is a modern, offline-first mobile guide application focused on Turkey’s cultural heritage and high-value ancient cities. Unlike existing tourist guides, it goes beyond superficial descriptions to present archaeological sites with stratigraphic depth and scientific analysis.',
-    'about_version': 'v1.1 • Academic Capstone Release',
+    'about_update_note': 'An optimization and quality update was made on 24.10.2026.',
+    'about_version': 'v1.1.1 • Academic Capstone Release',
     'about_legal': 'This application has been developed within the scope of the Senior Project course at İzmir Bakırçay University, Department of Management Information Systems. It is an academic study and has no commercial purpose. All rights reserved.',
 
     // Settings Section
@@ -208,7 +209,7 @@ final Map<String, Map<String, String>> localizedStrings = {
     // Menü ve Navigasyon
     'menu_title': 'Ana Menü',
     'menu_exit': 'Uygulamadan Çık',
-    'menu_version_text': 'v1.1 • Akademik Bitirme Projesi',
+    'menu_version_text': 'v1.1.1 • Akademik Bitirme Projesi',
     'drawer_header': 'Anadolu Mirası',
     'drawer_sites': 'Alan Listesi',
     'drawer_about': 'Proje Hakkında',
@@ -301,7 +302,8 @@ final Map<String, Map<String, String>> localizedStrings = {
     'about_content_name': 'Berkay Gülbeyaz',
     'about_content_role': 'Arkeolojik İçerik & Araştırma',
     'about_desc': 'Bu proje, Türkiye\'nin kültürel mirasına ve yüksek değere sahip antik kentlerine odaklanan modern, çevrimdışı öncelikli bir mobil rehber uygulamasıdır. Mevcut turist rehberlerinin aksine, yüzeysel tanımların ötesine geçerek arkeolojik alanları stratigrafik derinlik ve bilimsel analizle sunar.',
-    'about_version': 'v1.1 • Akademik Bitirme Projesi',
+    'about_update_note': '24.10.2026 tarihinde optimizasyon ve kalite güncellemesi yapılmıştır.',
+    'about_version': 'v1.1.1 • Akademik Bitirme Projesi',
     'about_legal': 'Bu uygulama, İzmir Bakırçay Üniversitesi Yönetim Bilişim Sistemleri Bölümü Bitirme Projesi kapsamında hazırlanmıştır. Akademik bir çalışmadır ve ticari amacı yoktur. Tüm hakları saklıdır.',
 
     // Ayarlar & Sözlük
