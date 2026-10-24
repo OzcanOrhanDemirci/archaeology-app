@@ -33,7 +33,7 @@ class _AppClickableState extends State<AppClickable> {
 
     return AnimatedScale(
 
-      scale: _isPressed ? 0.80 : 1.0,
+      scale: _isPressed ? 0.95 : 1.0,
       duration: const Duration(milliseconds: 100),
       curve: Curves.easeInOut,
       child: Material(
@@ -49,7 +49,7 @@ class _AppClickableState extends State<AppClickable> {
           onTap: () async {
 
             setState(() => _isPressed = true);
-            await Future.delayed(const Duration(milliseconds: 150));
+            await Future.delayed(const Duration(milliseconds: 60));
             if (mounted) {
               setState(() => _isPressed = false);
               widget.onTap();
