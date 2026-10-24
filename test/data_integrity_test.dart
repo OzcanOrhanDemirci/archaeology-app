@@ -14,7 +14,7 @@ void main() {
   final List<String> siteIds = globalSiteData.map((m) => m.id).toList();
 
   test('site metadata and registry cover exactly the same sites', () {
-    expect(siteIds, hasLength(30));
+    expect(siteIds, hasLength(21));
     expect(siteIds.toSet(), equals(siteRegistry.keys.toSet()));
   });
 

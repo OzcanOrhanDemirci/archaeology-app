@@ -4,7 +4,7 @@
 ![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 
-**Anatolia Heritage** is an information-centric Android mobile application designed to showcase 30 of Turkey's most significant archaeological sites (e.g., Ephesus, Troy, Göbeklitepe). Developed as a graduation project, it bridges the gap between academic depth and user experience, providing stratigraphic analyses and historical contexts in an offline-first environment.
+**Anatolia Heritage** is an information-centric Android mobile application designed to showcase 21 of Turkey's most significant archaeological sites (e.g., Ephesus, Troy, Göbeklitepe). Developed as a graduation project, it bridges the gap between academic depth and user experience, providing stratigraphic analyses and historical contexts in an offline-first environment.
 
 ## 📱 Features
 
@@ -63,7 +63,7 @@ lib/
 
 ```
 
-## 🌍 Supported Sites (30)
+## 🌍 Supported Sites (21)
 
 The application includes detailed stratigraphic data for the following UNESCO World Heritage sites and candidates:
 
@@ -73,10 +73,6 @@ The application includes detailed stratigraphic data for the following UNESCO Wo
 * **Pergamon, Hierapolis, Aphrodisias, Hattusa, Nemrut, Xanthos**
 * **Miletus, Priene, Sagalassos, Side, Didyma, Sardis**
 * **Kaunos, Myra, Laodicea, Termessos, Perge, Aspendos**
-* **Çatalhöyük** (Neolithic Rooftop City), **Gordion** (King Midas), **Arslantepe** (Dawn of Statehood), **Ani** (Silk Road Capital)
-* **Zeugma** (Euphrates Mosaics), **Halicarnassus** (The Mausoleum), **Patara** (Lycian League), **Aizanoi** (Zeus of Phrygia), **Assos** (Aristotle's Hilltop)
-
-Sites without bundled photography render text-first content blocks, so the catalogue can grow without reusing images from other sites.
 
 ## 🚀 Getting Started
 
