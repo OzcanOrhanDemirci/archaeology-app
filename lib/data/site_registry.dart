@@ -20,6 +20,15 @@ import 'sites/kaunos_data.dart';
 import 'sites/myra_data.dart';
 import 'sites/laodicea_data.dart';
 import 'sites/termessos_data.dart';
+import 'sites/catalhoyuk_data.dart';
+import 'sites/gordion_data.dart';
+import 'sites/arslantepe_data.dart';
+import 'sites/ani_data.dart';
+import 'sites/zeugma_data.dart';
+import 'sites/halikarnassos_data.dart';
+import 'sites/patara_data.dart';
+import 'sites/aizanoi_data.dart';
+import 'sites/assos_data.dart';
 
 
 typedef SiteDataFetcher = SiteData Function(String lang);
@@ -46,6 +55,15 @@ final Map<String, SiteDataFetcher> siteRegistry = {
   'myra': getMyraData,
   'laodicea': getLaodiceaData,
   'termessos': getTermessosData,
+  'catalhoyuk': getCatalhoyukData,
+  'gordion': getGordionData,
+  'arslantepe': getArslantepeData,
+  'ani': getAniData,
+  'zeugma': getZeugmaData,
+  'halikarnassos': getHalikarnassosData,
+  'patara': getPataraData,
+  'aizanoi': getAizanoiData,
+  'assos': getAssosData,
 };
 
 

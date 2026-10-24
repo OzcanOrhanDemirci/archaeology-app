@@ -46,4 +46,13 @@ const List<SiteMeta> globalSiteData = [
   SiteMeta(id: 'myra', nameKey: 'site_myra_name', subtitleKey: 'site_myra_sub', descKey: 'site_myra_desc', regionKey: 'mediterranean', icon: Icons.card_giftcard),
   SiteMeta(id: 'laodicea', nameKey: 'site_laodicea_name', subtitleKey: 'site_laodicea_sub', descKey: 'site_laodicea_desc', regionKey: 'aegean', icon: Icons.bolt),
   SiteMeta(id: 'termessos', nameKey: 'site_termessos_name', subtitleKey: 'site_termessos_sub', descKey: 'site_termessos_desc', regionKey: 'mediterranean', icon: Icons.terrain),
+  SiteMeta(id: 'catalhoyuk', nameKey: 'site_catalhoyuk_name', subtitleKey: 'site_catalhoyuk_sub', descKey: 'site_catalhoyuk_desc', regionKey: 'central', icon: Icons.cottage),
+  SiteMeta(id: 'gordion', nameKey: 'site_gordion_name', subtitleKey: 'site_gordion_sub', descKey: 'site_gordion_desc', regionKey: 'central', icon: Icons.account_tree),
+  SiteMeta(id: 'arslantepe', nameKey: 'site_arslantepe_name', subtitleKey: 'site_arslantepe_sub', descKey: 'site_arslantepe_desc', regionKey: 'east', icon: Icons.history_edu),
+  SiteMeta(id: 'ani', nameKey: 'site_ani_name', subtitleKey: 'site_ani_sub', descKey: 'site_ani_desc', regionKey: 'east', icon: Icons.church),
+  SiteMeta(id: 'zeugma', nameKey: 'site_zeugma_name', subtitleKey: 'site_zeugma_sub', descKey: 'site_zeugma_desc', regionKey: 'seast', icon: Icons.auto_awesome_mosaic),
+  SiteMeta(id: 'halikarnassos', nameKey: 'site_halikarnassos_name', subtitleKey: 'site_halikarnassos_sub', descKey: 'site_halikarnassos_desc', regionKey: 'aegean', icon: Icons.fort),
+  SiteMeta(id: 'patara', nameKey: 'site_patara_name', subtitleKey: 'site_patara_sub', descKey: 'site_patara_desc', regionKey: 'mediterranean', icon: Icons.explore),
+  SiteMeta(id: 'aizanoi', nameKey: 'site_aizanoi_name', subtitleKey: 'site_aizanoi_sub', descKey: 'site_aizanoi_desc', regionKey: 'aegean', icon: Icons.gavel),
+  SiteMeta(id: 'assos', nameKey: 'site_assos_name', subtitleKey: 'site_assos_sub', descKey: 'site_assos_desc', regionKey: 'marmara', icon: Icons.school),
 ];
