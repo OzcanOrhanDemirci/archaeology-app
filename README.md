@@ -17,7 +17,7 @@
 
 ## 🛠️ Technical Architecture
 
-This project strictly adheres to **Clean Code** principles and avoids heavy third-party dependencies to demonstrate core Flutter proficiency.
+This project strictly adheres to **Clean Code** principles and avoids heavy third-party dependencies to demonstrate core Flutter proficiency. The single platform plugin in use is `shared_preferences`, which persists the user's theme, color flavor, language and favorites across restarts.
 
 ### 1. Native State Management
 

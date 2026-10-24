@@ -3,42 +3,67 @@
 // Main Application Entry Point
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/models.dart';
 import 'data/localization.dart';
 import 'state/state.dart';
 import 'screens/splash_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+  runApp(MyApp(prefs: prefs));
 }
 
-/// Root Widget handling high-level state (Theme, Locale, Favorites).
+/// Root Widget handling high-level state (Theme, Locale, Favorites)
+/// and persisting it across app restarts.
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final SharedPreferences prefs;
+
+  const MyApp({super.key, required this.prefs});
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  static const String _kThemeMode = 'pref_theme_mode';
+  static const String _kThemeFlavor = 'pref_theme_flavor';
+  static const String _kLocale = 'pref_locale';
+  static const String _kFavorites = 'pref_favorites';
 
-  ThemeMode _themeMode = ThemeMode.dark;
-
-
-  AppThemeFlavor _themeFlavor = AppThemeFlavor.softDenim;
-
-  Locale _locale = const Locale('en');
+  late ThemeMode _themeMode;
+  late AppThemeFlavor _themeFlavor;
+  late Locale _locale;
   List<String> _favoriteSiteIds = [];
+
+  @override
+  void initState() {
+    super.initState();
+    final SharedPreferences prefs = widget.prefs;
+    _themeMode = ThemeMode.values.firstWhere(
+      (m) => m.name == prefs.getString(_kThemeMode),
+      orElse: () => ThemeMode.dark,
+    );
+    _themeFlavor = AppThemeFlavor.values.firstWhere(
+      (f) => f.name == prefs.getString(_kThemeFlavor),
+      orElse: () => AppThemeFlavor.softDenim,
+    );
+    _locale = Locale(prefs.getString(_kLocale) ?? 'en');
+    _favoriteSiteIds = prefs.getStringList(_kFavorites) ?? [];
+  }
 
   void toggleTheme() {
     setState(() {
       _themeMode =
       _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+      widget.prefs.setString(_kThemeMode, _themeMode.name);
     });
   }
 
   void setFlavor(AppThemeFlavor flavor) {
     setState(() {
       _themeFlavor = flavor;
+      widget.prefs.setString(_kThemeFlavor, flavor.name);
     });
   }
 
@@ -46,6 +71,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _locale =
       _locale.languageCode == 'en' ? const Locale('tr') : const Locale('en');
+      widget.prefs.setString(_kLocale, _locale.languageCode);
     });
   }
 
@@ -58,6 +84,7 @@ class _MyAppState extends State<MyApp> {
         newFavorites.add(siteId);
       }
       _favoriteSiteIds = newFavorites;
+      widget.prefs.setStringList(_kFavorites, newFavorites);
     });
   }
 
