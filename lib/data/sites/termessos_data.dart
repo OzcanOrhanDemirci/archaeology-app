@@ -14,7 +14,7 @@ SiteData getTermessosData(String lang) {
       TimelineData(label: isTr ? 'Helenistik' : 'Hellenistic', targetBlockId: 'tr2'),
       TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'tr3'),
       TimelineData(label: '0', isYearZero: true),
-      TimelineData(label: isTr ? 'Terk Ediliş' : 'Abandonment', targetBlockId: 'tr4'),
+      TimelineData(label: isTr ? 'Terk Ediliş' : 'Abandonment'),
     ],
     sections: [
       SiteSection(

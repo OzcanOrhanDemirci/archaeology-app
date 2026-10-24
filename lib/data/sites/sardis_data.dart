@@ -14,7 +14,7 @@ SiteData getSardisData(String lang) {
       TimelineData(label: isTr ? 'Pers' : 'Persian', targetBlockId: 'sr2'),
       TimelineData(label: isTr ? 'Helenistik' : 'Hellenistic', targetBlockId: 'sr3'),
       TimelineData(label: '0', isYearZero: true),
-      TimelineData(label: isTr ? 'Roma/Bizans' : 'Roman/Byz.', targetBlockId: 'sr4'),
+      TimelineData(label: isTr ? 'Roma/Bizans' : 'Roman/Byz.', targetBlockId: 'sr1'),
     ],
     sections: [
       SiteSection(

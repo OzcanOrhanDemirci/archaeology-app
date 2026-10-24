@@ -14,7 +14,7 @@ SiteData getKaunosData(String lang) {
       TimelineData(label: isTr ? 'Helenistik' : 'Hellenistic', targetBlockId: 'k2'),
       TimelineData(label: '0', isYearZero: true),
       TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'k3'),
-      TimelineData(label: isTr ? 'Limanın Dolması' : 'Siltation', targetBlockId: 'k4'),
+      TimelineData(label: isTr ? 'Limanın Dolması' : 'Siltation'),
     ],
     sections: [
       SiteSection(

@@ -14,7 +14,7 @@ SiteData getDidymaData(String lang) {
       TimelineData(label: isTr ? 'Pers Yıkımı' : 'Persian Destr.', targetBlockId: 'd2'),
       TimelineData(label: isTr ? 'Helenistik' : 'Hellenistic', targetBlockId: 'd3'),
       TimelineData(label: '0', isYearZero: true),
-      TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'd4'),
+      TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'd3'),
     ],
     sections: [
       SiteSection(

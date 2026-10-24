@@ -14,7 +14,7 @@ SiteData getMiletusData(String lang) {
       TimelineData(label: isTr ? 'Klasik' : 'Classical', targetBlockId: 'm2'),
       TimelineData(label: isTr ? 'Helenistik' : 'Hellenistic', targetBlockId: 'm3'),
       TimelineData(label: '0', isYearZero: true),
-      TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'm4'),
+      TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'm2'),
     ],
     sections: [
       SiteSection(

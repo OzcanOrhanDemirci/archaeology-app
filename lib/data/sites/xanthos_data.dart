@@ -14,7 +14,7 @@ SiteData getXanthosData(String lang) {
       TimelineData(label: isTr ? 'Likya' : 'Lycian', targetBlockId: 'x2'),
       TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'x3'),
       TimelineData(label: '0', isYearZero: true),
-      TimelineData(label: isTr ? 'Bizans' : 'Byzantine', targetBlockId: 'x4'),
+      TimelineData(label: isTr ? 'Bizans' : 'Byzantine'),
     ],
     sections: [
       SiteSection(

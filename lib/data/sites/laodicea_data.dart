@@ -14,7 +14,7 @@ SiteData getLaodiceaData(String lang) {
       TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'l2'),
       TimelineData(label: '0', isYearZero: true),
       TimelineData(label: isTr ? 'Hristiyanlık' : 'Christianity', targetBlockId: 'l3'),
-      TimelineData(label: isTr ? 'Deprem' : 'Earthquake', targetBlockId: 'l4'),
+      TimelineData(label: isTr ? 'Deprem' : 'Earthquake'),
     ],
     sections: [
       SiteSection(

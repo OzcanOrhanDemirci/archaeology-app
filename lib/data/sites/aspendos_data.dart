@@ -10,11 +10,11 @@ SiteData getAspendosData(String lang) {
         ? 'Köprüçay (Eurymedon) kenarında kurulan Aspendos, antik dünyanın en iyi korunmuş tiyatrosuna ev sahipliği yapar. Su mühendisliği harikası olan kemerleri ve görkemli tiyatrosu, Roma mimarisinin dayanıklılığının en büyük kanıtıdır.'
         : 'Established on the banks of the Eurymedon River, Aspendos hosts the best-preserved theater of the ancient world. Its aqueducts, a marvel of water engineering, and its magnificent theater are the greatest proof of Roman architectural durability.',
     timeline: [
-      TimelineData(label: isTr ? 'Klasik' : 'Classical', targetBlockId: 'a1'),
+      TimelineData(label: isTr ? 'Klasik' : 'Classical', targetBlockId: 'a2'),
       TimelineData(label: isTr ? 'Helenistik' : 'Hellenistic', targetBlockId: 'a2'),
       TimelineData(label: '0', isYearZero: true),
-      TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'a3'),
-      TimelineData(label: isTr ? 'Su Yolları' : 'Aqueducts', targetBlockId: 'a4'),
+      TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'a1'),
+      TimelineData(label: isTr ? 'Su Yolları' : 'Aqueducts', targetBlockId: 'a3'),
     ],
     sections: [
       SiteSection(

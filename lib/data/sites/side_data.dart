@@ -14,7 +14,7 @@ SiteData getSideData(String lang) {
       TimelineData(label: isTr ? 'Helenistik' : 'Hellenistic', targetBlockId: 'sd2'),
       TimelineData(label: isTr ? 'Roma' : 'Roman', targetBlockId: 'sd3'),
       TimelineData(label: '0', isYearZero: true),
-      TimelineData(label: isTr ? 'Bizans' : 'Byzantine', targetBlockId: 'sd4'),
+      TimelineData(label: isTr ? 'Bizans' : 'Byzantine'),
     ],
     sections: [
       SiteSection(
