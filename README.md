@@ -106,6 +106,18 @@ flutter build apk --release
 
 ```
 
+5. **Release signing (optional):**
+   Create a keystore and describe it in `android/key.properties`
+   (this file is git-ignored and must never be committed):
+```properties
+storePassword=<keystore password>
+keyPassword=<key password>
+keyAlias=upload
+storeFile=<absolute path to upload-keystore.jks>
+```
+   When the file is present, release builds are signed with it;
+   otherwise they fall back to the debug key for local runs only.
+
 ## 👥 Team
 
 * **Özcan Orhan Demirci** - *Lead Developer & Architecture*
