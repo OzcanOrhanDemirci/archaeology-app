@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import '../state/state.dart';
 import '../core/models.dart';
 import '../core/utils.dart';
-import '../data/localization.dart';
 import '../data/site_registry.dart';
 import '../widgets/timeline.dart';
 import '../widgets/site_widgets.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/app_bar.dart';
 
 class UniversalSiteScreen extends StatefulWidget {
   final String siteId;
@@ -200,12 +200,8 @@ class _UniversalSiteScreenState extends State<UniversalSiteScreen> {
     return DefaultTabController(
       length: siteData.sections.length,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(siteData.title),
-
-          automaticallyImplyLeading: false,
-
-          leading: const BackButton(),
+        appBar: AppAppBar(
+          title: siteData.title,
           bottom: hasTabs
               ? TabBar(
             isScrollable: true,
@@ -220,35 +216,6 @@ class _UniversalSiteScreenState extends State<UniversalSiteScreen> {
                 .toList(),
           )
               : null,
-          actions: [
-            TextButton(
-              onPressed: provider.toggleLocale,
-              style: TextButton.styleFrom(
-                foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
-              ),
-              child: Text(
-                lang == 'en' ? 'TR' : 'EN',
-                style:
-                const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-            ),
-            IconButton(
-              icon: Icon(
-                provider.themeMode == ThemeMode.light
-                    ? Icons.dark_mode
-                    : Icons.light_mode,
-              ),
-              onPressed: provider.toggleTheme,
-              tooltip: localizedStrings[lang]!['tooltip_theme']!,
-            ),
-
-            Builder(
-              builder: (context) => IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () => Scaffold.of(context).openDrawer(),
-              ),
-            ),
-          ],
         ),
 
         drawer: const AppDrawer(),

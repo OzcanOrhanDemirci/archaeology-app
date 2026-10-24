@@ -4,6 +4,7 @@ import '../state/state.dart';
 import '../data/localization.dart';
 import '../widgets/app_clickable.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/app_bar.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -27,16 +28,9 @@ class AboutScreen extends StatelessWidget {
     final Color cardColor = Theme.of(context).cardColor;
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: const BackButton(),
-        title: Text(texts['about_appbar']!),
+      appBar: AppAppBar(
+        title: texts['about_appbar']!,
         centerTitle: true,
-        actions: [
-          TextButton(onPressed: provider.toggleLocale, style: TextButton.styleFrom(foregroundColor: Theme.of(context).appBarTheme.foregroundColor), child: Text(lang == 'en' ? 'TR' : 'EN', style: const TextStyle(fontWeight: FontWeight.bold))),
-          IconButton(icon: Icon(provider.themeMode == ThemeMode.light ? Icons.dark_mode : Icons.light_mode), onPressed: provider.toggleTheme),
-          Builder(builder: (context) => IconButton(icon: const Icon(Icons.menu), onPressed: () => Scaffold.of(context).openDrawer())),
-        ],
       ),
       drawer: const AppDrawer(),
       body: Column(

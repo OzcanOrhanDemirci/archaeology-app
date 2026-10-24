@@ -5,6 +5,7 @@ import '../data/localization.dart';
 import '../core/models.dart';
 import '../widgets/app_clickable.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/app_bar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -60,16 +61,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final String formattedDate = lang == 'tr' ? '${_now.day.toString().padLeft(2, '0')}.${_now.month.toString().padLeft(2, '0')}.${_now.year}' : '${_now.month.toString().padLeft(2, '0')}/${_now.day.toString().padLeft(2, '0')}/${_now.year}';
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: const BackButton(),
-        title: Text(localizedStrings[lang]!['settings_appbar']!),
-        actions: [
-          TextButton(onPressed: provider.toggleLocale, style: TextButton.styleFrom(foregroundColor: Theme.of(context).appBarTheme.foregroundColor), child: Text(lang == 'en' ? 'TR' : 'EN', style: const TextStyle(fontWeight: FontWeight.bold))),
-          IconButton(icon: Icon(provider.themeMode == ThemeMode.light ? Icons.dark_mode : Icons.light_mode), onPressed: provider.toggleTheme),
-          Builder(builder: (context) => IconButton(icon: const Icon(Icons.menu), onPressed: () => Scaffold.of(context).openDrawer())),
-        ],
-      ),
+      appBar: AppAppBar(title: localizedStrings[lang]!['settings_appbar']!),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),

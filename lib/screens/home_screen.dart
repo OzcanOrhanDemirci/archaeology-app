@@ -4,6 +4,7 @@ import '../data/localization.dart';
 import '../data/sites.dart';
 import '../widgets/app_clickable.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/app_bar.dart';
 import 'universal_site_screen.dart';
 import 'favorites_screen.dart';
 
@@ -44,28 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }).toList();
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: const BackButton(),
-        title: Text(localizedStrings[lang]!['home_title']!),
-        actions: [
-          TextButton(
-            onPressed: provider.toggleLocale,
-            style: TextButton.styleFrom(foregroundColor: Theme.of(context).appBarTheme.foregroundColor),
-            child: Text(lang == 'en' ? 'TR' : 'EN', style: const TextStyle(fontWeight: FontWeight.bold)),
-          ),
-          IconButton(
-            icon: Icon(provider.themeMode == ThemeMode.light ? Icons.dark_mode : Icons.light_mode),
-            onPressed: provider.toggleTheme,
-          ),
-          Builder(
-            builder: (context) => IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppAppBar(title: localizedStrings[lang]!['home_title']!),
       drawer: const AppDrawer(),
       body: Column(
         children: [

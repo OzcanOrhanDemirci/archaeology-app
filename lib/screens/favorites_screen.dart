@@ -4,6 +4,7 @@ import '../data/localization.dart';
 import '../data/sites.dart';
 import '../widgets/app_clickable.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/app_bar.dart';
 import 'universal_site_screen.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -20,39 +21,7 @@ class FavoritesScreen extends StatelessWidget {
         .toList();
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: const BackButton(),
-        title: Text(localizedStrings[lang]!['favorites_appbar']!),
-        actions: [
-          TextButton(
-            onPressed: provider.toggleLocale,
-            style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
-            ),
-            child: Text(
-              lang == 'en' ? 'TR' : 'EN',
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          IconButton(
-            icon: Icon(
-              provider.themeMode == ThemeMode.light
-                  ? Icons.dark_mode
-                  : Icons.light_mode,
-            ),
-            onPressed: provider.toggleTheme,
-            tooltip: localizedStrings[lang]!['tooltip_theme']!,
-          ),
-          Builder(
-            builder: (context) => IconButton(
-              icon: const Icon(Icons.menu),
-              tooltip: localizedStrings[lang]!['tooltip_menu'],
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppAppBar(title: localizedStrings[lang]!['favorites_appbar']!),
       drawer: const AppDrawer(),
       body: favoriteSites.isEmpty
           ? Center(

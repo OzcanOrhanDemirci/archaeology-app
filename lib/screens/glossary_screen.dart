@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../state/state.dart';
 import '../data/localization.dart';
 import '../widgets/app_drawer.dart';
+import '../widgets/app_bar.dart';
 
 class GlossaryScreen extends StatelessWidget {
   const GlossaryScreen({super.key});
@@ -21,15 +22,8 @@ class GlossaryScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          leading: const BackButton(),
-          title: Text(texts['glossary_appbar']!),
-          actions: [
-            TextButton(onPressed: provider.toggleLocale, style: TextButton.styleFrom(foregroundColor: tabLabelColor), child: Text(lang == 'en' ? 'TR' : 'EN', style: const TextStyle(fontWeight: FontWeight.bold))),
-            IconButton(icon: Icon(provider.themeMode == ThemeMode.light ? Icons.dark_mode : Icons.light_mode), onPressed: provider.toggleTheme),
-            Builder(builder: (context) => IconButton(icon: const Icon(Icons.menu), onPressed: () => Scaffold.of(context).openDrawer())),
-          ],
+        appBar: AppAppBar(
+          title: texts['glossary_appbar']!,
           bottom: TabBar(
             indicatorColor: activeColor,
             labelColor: tabLabelColor,
