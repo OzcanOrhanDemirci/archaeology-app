@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../core/term_links.dart';
 import '../core/utils.dart';
 
 /// Displays an image block with a title and descriptive text.
@@ -59,8 +60,8 @@ class SiteContentBlock extends StatelessWidget {
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
-          Text(
-            text,
+          LinkedText(
+            text: text,
             style: const TextStyle(fontSize: 16, height: 1.5),
           ),
         ],

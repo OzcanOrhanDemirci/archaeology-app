@@ -13,8 +13,10 @@ class GlossaryScreen extends StatelessWidget {
     final String lang = provider.locale.languageCode;
     final texts = localizedStrings[lang]!;
 
-    final terms = texts.keys.where((k) => k.startsWith('term_') && k.endsWith('_t')).map((k) => k.replaceAll('_t', '')).where((baseKey) => texts.containsKey('${baseKey}_t') && texts.containsKey('${baseKey}_d') && texts['${baseKey}_t']!.isNotEmpty).toList();
-    final periods = texts.keys.where((k) => k.startsWith('period_') && k.endsWith('_t')).map((k) => k.replaceAll('_t', '')).where((baseKey) => texts.containsKey('${baseKey}_t') && texts.containsKey('${baseKey}_d') && texts['${baseKey}_t']!.isNotEmpty).toList();
+    // Strip the "_t" suffix without touching matching substrings inside
+    // the key itself (e.g. "term_tumulus_t" contains "_t" twice).
+    final terms = texts.keys.where((k) => k.startsWith('term_') && k.endsWith('_t')).map((k) => k.substring(0, k.length - 2)).where((baseKey) => texts.containsKey('${baseKey}_t') && texts.containsKey('${baseKey}_d') && texts['${baseKey}_t']!.isNotEmpty).toList();
+    final periods = texts.keys.where((k) => k.startsWith('period_') && k.endsWith('_t')).map((k) => k.substring(0, k.length - 2)).where((baseKey) => texts.containsKey('${baseKey}_t') && texts.containsKey('${baseKey}_d') && texts['${baseKey}_t']!.isNotEmpty).toList();
 
     final Color activeColor = Theme.of(context).iconTheme.color!;
     final Color tabLabelColor = Theme.of(context).appBarTheme.foregroundColor ?? Colors.white;

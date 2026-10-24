@@ -12,6 +12,7 @@ final Map<String, Map<String, String>> localizedStrings = {
     'tooltip_theme': 'Toggle Light/Dark',
     'tooltip_lang': 'Change Language',
     'tooltip_menu': 'Open Menu',
+    'dialog_close': 'Close',
 
     // Drawer & Navigation & Menu
     'menu_title': 'Main Menu',
@@ -197,6 +198,7 @@ final Map<String, Map<String, String>> localizedStrings = {
     'tooltip_theme': 'Açık/Koyu Mod',
     'tooltip_lang': 'Dili Değiştir',
     'tooltip_menu': 'Menüyü Aç',
+    'dialog_close': 'Kapat',
 
     // Menü ve Navigasyon
     'menu_title': 'Ana Menü',
