@@ -41,9 +41,11 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
               style: const TextStyle(fontWeight: FontWeight.bold)),
         ),
         IconButton(
-          icon: Icon(provider.themeMode == ThemeMode.light
-              ? Icons.dark_mode
-              : Icons.light_mode),
+          icon: Icon(switch (provider.themeMode) {
+            ThemeMode.light => Icons.dark_mode,
+            ThemeMode.dark => Icons.light_mode,
+            ThemeMode.system => Icons.brightness_auto,
+          }),
           onPressed: provider.toggleTheme,
           tooltip: localizedStrings[lang]!['tooltip_theme']!,
         ),

@@ -37,4 +37,23 @@ void main() {
     expect(find.text('ARKEOLOJI UYGULAMASI'), findsOneWidget);
     expect(find.text('ARCHAEOLOGY APP'), findsNothing);
   });
+
+  testWidgets('theme mode selection is persisted',
+      (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+
+    await tester.pumpWidget(MyApp(prefs: prefs));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('SETTINGS'));
+    await tester.pump(const Duration(milliseconds: 200));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('System'));
+    await tester.pumpAndSettle();
+
+    final store = await SharedPreferences.getInstance();
+    expect(store.getString('pref_theme_mode'), 'system');
+  });
 }

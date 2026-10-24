@@ -68,6 +68,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text(localizedStrings[lang]!['settings_mode_title']!, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 16),
+            SegmentedButton<ThemeMode>(
+              segments: [
+                ButtonSegment(value: ThemeMode.light, label: Text(localizedStrings[lang]!['mode_light']!), icon: const Icon(Icons.light_mode)),
+                ButtonSegment(value: ThemeMode.dark, label: Text(localizedStrings[lang]!['mode_dark']!), icon: const Icon(Icons.dark_mode)),
+                ButtonSegment(value: ThemeMode.system, label: Text(localizedStrings[lang]!['mode_system']!), icon: const Icon(Icons.brightness_auto)),
+              ],
+              selected: {provider.themeMode},
+              onSelectionChanged: (selection) => provider.setThemeMode(selection.first),
+            ),
+            const SizedBox(height: 32),
             Text(localizedStrings[lang]!['settings_theme_title']!, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             const SizedBox(height: 16),
             GridView.count(shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), crossAxisCount: 4, mainAxisSpacing: 16, crossAxisSpacing: 16, childAspectRatio: 0.75, children: [

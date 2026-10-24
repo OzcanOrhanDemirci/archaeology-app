@@ -9,6 +9,7 @@ class AppStateProvider extends InheritedWidget {
   final List<String> favoriteSiteIds;
   final VoidCallback toggleLocale;
   final VoidCallback toggleTheme;
+  final ValueSetter<ThemeMode> setThemeMode;
   final ValueSetter<AppThemeFlavor> setFlavor;
   final ValueSetter<String> toggleFavorite;
 
@@ -20,6 +21,7 @@ class AppStateProvider extends InheritedWidget {
     required this.favoriteSiteIds,
     required this.toggleLocale,
     required this.toggleTheme,
+    required this.setThemeMode,
     required this.setFlavor,
     required this.toggleFavorite,
     required super.child,

@@ -54,9 +54,23 @@ class _MyAppState extends State<MyApp> {
 
   void toggleTheme() {
     setState(() {
-      _themeMode =
-      _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+      _themeMode = switch (_themeMode) {
+        ThemeMode.light => ThemeMode.dark,
+        ThemeMode.dark => ThemeMode.light,
+        ThemeMode.system => WidgetsBinding
+                    .instance.platformDispatcher.platformBrightness ==
+                Brightness.dark
+            ? ThemeMode.light
+            : ThemeMode.dark,
+      };
       widget.prefs.setString(_kThemeMode, _themeMode.name);
+    });
+  }
+
+  void setThemeMode(ThemeMode mode) {
+    setState(() {
+      _themeMode = mode;
+      widget.prefs.setString(_kThemeMode, mode.name);
     });
   }
 
@@ -211,6 +225,7 @@ class _MyAppState extends State<MyApp> {
       favoriteSiteIds: _favoriteSiteIds,
       toggleLocale: toggleLocale,
       toggleTheme: toggleTheme,
+      setThemeMode: setThemeMode,
       setFlavor: setFlavor,
       toggleFavorite: toggleFavorite,
       child: MaterialApp(

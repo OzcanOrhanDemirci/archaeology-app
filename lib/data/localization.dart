@@ -107,6 +107,10 @@ final Map<String, Map<String, String>> localizedStrings = {
 
     // Settings Section
     'settings_appbar': 'Settings',
+    'settings_mode_title': 'Theme Mode',
+    'mode_light': 'Light',
+    'mode_dark': 'Dark',
+    'mode_system': 'System',
     'settings_theme_title': 'Visual Theme',
     'theme_turquoiseGray': 'Turquoise',
     'theme_softDenim': 'Soft Denim',
@@ -288,6 +292,10 @@ final Map<String, Map<String, String>> localizedStrings = {
 
     // Ayarlar & Sözlük
     'settings_appbar': 'Ayarlar',
+    'settings_mode_title': 'Tema Modu',
+    'mode_light': 'Açık',
+    'mode_dark': 'Koyu',
+    'mode_system': 'Sistem',
     'settings_theme_title': 'Görsel Tema',
     'theme_turquoiseGray': 'Turkuaz',
     'theme_softDenim': 'Soluk Kot',
