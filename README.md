@@ -11,7 +11,6 @@
 * **Information-Centric Delivery:** Focuses on high-quality, academic content without the clutter of complex maps or navigation.
 * **Offline First:** All data, images, and architectural analyses are bundled within the app, requiring no internet connection.
 * **Stratigraphic Analysis:** Visualizes the historical layers (e.g., Troy's 9 layers, Ephesus's marine regression) using custom UI blocks.
-* **Glossary-Linked Text:** Archaeological terms inside site descriptions are underlined; tapping one opens its definition from the built-in glossary.
 * **Two-Way Timeline:** Tapping a period on the `HorizontalTimeline` scrolls to its content, and scrolling the content updates the selected period.
 * **Dynamic Theme Engine:** Features **8 distinct color flavors** (e.g., *Soft Denim, Imperial Purple, Amber Forest*) based on the "60-30-10" color rule.
 * **Bilingual Support:** Full English and Turkish support with instant language switching via `localization.dart` .
