@@ -15,10 +15,10 @@
 </p>
 
 <p align="center">
-  <img src=".github/readme/menu-dark-en.png" width="200" alt="English main menu in dark theme">
-  <img src=".github/readme/site-list.png" width="200" alt="Site list with search, region filters and favorite buttons">
-  <img src=".github/readme/site-ephesus.jpg" width="200" alt="Ephesus general stratigraphy with a horizontal timeline and site photograph">
-  <img src=".github/readme/stratigraphic-analysis.png" width="200" alt="Ephesus stratigraphic analysis with a section diagram and abstract">
+  <img src=".github/readme/menu-dark-en.png" width="170" alt="English main menu in dark theme">
+  <img src=".github/readme/site-list.png" width="170" alt="Site list with search, region filters and favorite buttons">
+  <img src=".github/readme/site-ephesus.jpg" width="170" alt="Ephesus general stratigraphy with a horizontal timeline and site photograph">
+  <img src=".github/readme/stratigraphic-analysis.png" width="170" alt="Ephesus stratigraphic analysis with a section diagram and abstract">
 </p>
 
 <p align="center">
@@ -52,10 +52,10 @@ The repository keeps the app as it was built: the graduation project of 2025–2
 - **Glossary:** separate tabs explain archaeological terms and historical periods.
 
 <p align="center">
-  <img src=".github/readme/settings-themes.png" width="200" alt="Settings with Light, Dark and System modes and eight color themes">
-  <img src=".github/readme/menu-light-tr.png" width="200" alt="Turkish main menu in the light Amber theme">
-  <img src=".github/readme/glossary-tr.png" width="200" alt="Turkish glossary with Terms and Periods tabs">
-  <img src=".github/readme/about-tr.png" width="200" alt="Turkish About screen with team credits and the October 2026 update note">
+  <img src=".github/readme/settings-themes.png" width="170" alt="Settings with Light, Dark and System modes and eight color themes">
+  <img src=".github/readme/menu-light-tr.png" width="170" alt="Turkish main menu in the light Amber theme">
+  <img src=".github/readme/glossary-tr.png" width="170" alt="Turkish glossary with Terms and Periods tabs">
+  <img src=".github/readme/about-tr.png" width="170" alt="Turkish About screen with team credits and the October 2026 update note">
 </p>
 
 ## Sites
