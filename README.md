@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Dart-%5E3.9.2-0175C2?logo=dart&logoColor=white" alt="Dart SDK ^3.9.2">
   <img src="https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white" alt="Android">
   <a href="https://github.com/OzcanOrhanDemirci/archaeology-app/releases/latest"><img src="https://img.shields.io/github/v/release/OzcanOrhanDemirci/archaeology-app" alt="Latest release"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-All%20rights%20reserved-lightgrey" alt="License: All rights reserved"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/Graduation-project-8F8578" alt="Graduation project">
 </p>
 
@@ -169,7 +169,7 @@ Tests in `test/` check:
 
 ## License
 
-Copyright (c) 2026 Özcan Orhan Demirci. **All rights reserved.** The source is published for academic showcase and review; copying, modification, distribution or commercial use requires written permission. See [LICENSE](LICENSE).
+The source code is released under the [MIT License](LICENSE). Copyright (c) 2025-2026 Özcan Orhan Demirci. Site photographs and third-party content bundled with the app (images and cited research material) belong to their respective owners and are not covered by the MIT License.
 
 ## Contact
 
