@@ -1,142 +1,176 @@
-# Anatolia Heritage: Digital Archaeological Guide 🏛️
+<h1 align="center">Anatolia Heritage</h1>
 
-![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+<p align="center">
+  An offline, bilingual guide to 21 archaeological sites of Turkey.<br>
+  <sub>Anadolu Mirası · English / Türkçe</sub>
+</p>
 
-**Anatolia Heritage** is an information-centric Android mobile application designed to showcase 21 of Turkey's most significant archaeological sites (e.g., Ephesus, Troy, Göbeklitepe). Developed as a graduation project, it bridges the gap between academic depth and user experience, providing stratigraphic analyses and historical contexts in an offline-first environment.
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white" alt="Flutter 3.x">
+  <img src="https://img.shields.io/badge/Dart-%5E3.9.2-0175C2?logo=dart&logoColor=white" alt="Dart SDK ^3.9.2">
+  <img src="https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white" alt="Android">
+  <a href="https://github.com/OzcanOrhanDemirci/archaeology-app/releases/latest"><img src="https://img.shields.io/github/v/release/OzcanOrhanDemirci/archaeology-app" alt="Latest release"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-All%20rights%20reserved-lightgrey" alt="License: All rights reserved"></a>
+  <img src="https://img.shields.io/badge/Graduation-project-8F8578" alt="Graduation project">
+</p>
 
-## 📱 Features
+<p align="center">
+  <img src=".github/readme/menu-dark-en.png" width="200" alt="English main menu in dark theme">
+  <img src=".github/readme/site-list.png" width="200" alt="Site list with search, region filters and favorite buttons">
+  <img src=".github/readme/site-ephesus.jpg" width="200" alt="Ephesus general stratigraphy with a horizontal timeline and site photograph">
+  <img src=".github/readme/stratigraphic-analysis.png" width="200" alt="Ephesus stratigraphic analysis with a section diagram and abstract">
+</p>
 
-* **Information-Centric Delivery:** Focuses on high-quality, academic content without the clutter of complex maps or navigation.
-* **Offline First:** All data, images, and architectural analyses are bundled within the app, requiring no internet connection.
-* **Stratigraphic Analysis:** Visualizes the historical layers (e.g., Troy's 9 layers, Ephesus's marine regression) using custom UI blocks.
-* **Two-Way Timeline:** Tapping a period on the `HorizontalTimeline` scrolls to its content, and scrolling the content updates the selected period.
-* **Dynamic Theme Engine:** Features **8 distinct color flavors** (e.g., *Soft Denim, Imperial Purple, Amber Forest*) based on the "60-30-10" color rule.
-* **Bilingual Support:** Full English and Turkish support with instant language switching via `localization.dart` .
-* **Region Filters:** Choice chips on the home screen narrow the list by modern geographic region (Aegean, Mediterranean, Central Anatolia, ...).
-* **Custom Timeline:** An interactive `HorizontalTimeline` widget to navigate through historical periods .
+<p align="center">
+  <a href="#features">Features</a> ·
+  <a href="#sites">Sites</a> ·
+  <a href="#download">Download</a> ·
+  <a href="#build-from-source">Build from source</a>
+</p>
 
-## 🛠️ Technical Architecture
+## About
 
-This project strictly adheres to **Clean Code** principles and avoids heavy third-party dependencies to demonstrate core Flutter proficiency. The single platform plugin in use is `shared_preferences`, which persists the user's theme, color flavor, language and favorites across restarts.
+Anatolia Heritage is a Flutter Android application for reading about archaeological sites, their settlement periods and stratigraphic layers. Site texts, photographs, analysis diagrams and the glossary are bundled with the app for offline use.
 
-### 1. Native State Management
+Özcan Orhan Demirci and Berkay Gülbeyaz developed it as a Senior Project at **İzmir Bakırçay University, Department of Management Information Systems**, in the autumn of 2025. The academic capstone version, **v1.0.0**, was completed on 1 January 2026.
 
-Instead of using external libraries like Bloc or Provider, a custom `AppStateProvider` was implemented using Flutter's **`InheritedWidget`**. This manages the global state (Theme, Locale, Favorites) efficiently and performantly .
+An optimization and quality update on **24 October 2026** brought resized and recompressed photographs, saved preferences, system theme mode, region filters, synchronized timeline navigation and navigation fixes. The current app version is **v1.1.1 (build 3)**, with 21 sites.
 
-### 2. Data Registry & Lazy Loading
+The repository keeps the app as it was built: the graduation project of 2025–2026 with its October 2026 update.
 
-To optimize memory usage, the app uses a **Lazy Loading** pattern defined in `site_registry.dart`. Detailed content for the 21 sites is not loaded at startup; instead, it is fetched only when the user navigates to a specific site .
+## Features
 
-### 3. Modular File Structure
+- **Offline reading:** site histories, stratigraphic analyses, photographs and diagrams are included in the app.
+- **English and Turkish:** switch the interface, site content and glossary language within the app.
+- **Search and region filters:** search site names and descriptions, and narrow the list by geographic region.
+- **Two-way timeline:** tap a linked period to scroll to its content; scrolling the content updates the selected timeline period.
+- **Stratigraphic views:** read general stratigraphy and a separate analysis section with diagrams and explanatory text.
+- **Image viewer:** tap site photographs and analysis images to open a full-screen, zoomable view.
+- **Favorites:** save sites and revisit them from a dedicated list.
+- **Appearance:** Light, Dark or System mode, plus eight color themes: Soft Denim, Turquoise, Sage, Amber, Crimson, Ocean, Earth and Imperial.
+- **Saved choices:** language, theme mode, color theme and favorites persist between app launches.
+- **Glossary:** separate tabs explain archaeological terms and historical periods.
 
-The project is organized into clear layers (Data, Core, Screens, Widgets, State) to ensure scalability.
+<p align="center">
+  <img src=".github/readme/settings-themes.png" width="200" alt="Settings with Light, Dark and System modes and eight color themes">
+  <img src=".github/readme/menu-light-tr.png" width="200" alt="Turkish main menu in the light Amber theme">
+  <img src=".github/readme/glossary-tr.png" width="200" alt="Turkish glossary with Terms and Periods tabs">
+  <img src=".github/readme/about-tr.png" width="200" alt="Turkish About screen with team credits and the October 2026 update note">
+</p>
 
-```
-lib/
-├── main.dart (App entry point & Theme Engine)
-├── core/
-│   ├── models.dart (Data Models: SiteData, AnalysisSection)
-│   └── utils.dart (Helpers: Zoomable Image Viewer)
-├── data/
-│   ├── localization.dart (Static string maps for TR/EN)
-│   ├── site_registry.dart (Lazy-loader registry)
-│   ├── sites.dart (Site metadata for search)
-│   └── sites/ (Individual content files for 21 sites)
-├── screens/
-│ ├── about_screen.dart (Project info & credits)
-│ ├── favorites_screen.dart (User's saved sites)
-│ ├── glossary_screen.dart (Archaeological dictionary)
-│ ├── home_screen.dart (Main list & search view)
-│ ├── settings_screen.dart (Theme & language settings)
-│ ├── splash_screen.dart (App launch screen)
-│ └── universal_site_screen.dart (Dynamic details page)
-├── state/
-│   └── state.dart (InheritedWidget Implementation)
-└── widgets/
-│ ├── app_clickable.dart (Interactive button wrapper)
-│ ├── app_drawer.dart (Side navigation menu)
-│ ├── site_widgets.dart (Reusable content blocks)
-│ └── timeline.dart (Horizontal history timeline)
+## Sites
 
-```
+The 21 sites below use the English names and regional groupings defined in the app.
 
-## 🌍 Supported Sites (21)
+| Region | Sites |
+| --- | --- |
+| Aegean | Ephesus, Pergamon, Hierapolis, Aphrodisias, Miletus, Priene, Didyma, Sardis, Kaunos, Laodicea |
+| Marmara | Troy |
+| Mediterranean | Aspendos, Perge, Xanthos, Sagalassos, Side, Myra, Termessos |
+| Central Anatolia | Hattusa |
+| Southeastern Anatolia | Mount Nemrut, Göbeklitepe |
 
-The application includes detailed stratigraphic data for the following UNESCO World Heritage sites and candidates:
+## Download
 
-* **Ephesus** (Marine Regression Analysis)
-* **Troy** (9 Settlement Layers)
-* **Göbeklitepe** (The World's Oldest Temple)
-* **Pergamon, Hierapolis, Aphrodisias, Hattusa, Nemrut, Xanthos**
-* **Miletus, Priene, Sagalassos, Side, Didyma, Sardis**
-* **Kaunos, Myra, Laodicea, Termessos, Perge, Aspendos**
+**[Download the APK (v1.1.1, Android, about 86 MB)](https://github.com/OzcanOrhanDemirci/archaeology-app/releases/download/v1.1.1/anatolia-heritage-1.1.1.apk)**
 
-## 🚀 Getting Started
+Open the file on your Android device and allow installation from that source when asked. The APK is built from the [v1.1.1 tag](https://github.com/OzcanOrhanDemirci/archaeology-app/releases/tag/v1.1.1) without changes and signed with a local debug key, so it is a showcase build, not a Play Store app. Its SHA-256 is listed in the release's `SHA256SUMS`.
 
-To run this project locally:
+The academic capstone version is kept as the [v1.0.0 release](https://github.com/OzcanOrhanDemirci/archaeology-app/releases/tag/v1.0.0) (source only).
 
-1. **Clone the repository:**
-```bash
-git clone https://github.com/OzcanOrhanDemirci/archaeology_app.git
+## Build from source
 
-```
+Use **Flutter 3.x stable**, a Dart SDK satisfying **`^3.9.2`**, and an Android development toolchain. Connect an Android device with USB debugging enabled or start an Android emulator.
 
-2. **Install dependencies:**
-```bash
+```sh
+git clone https://github.com/OzcanOrhanDemirci/archaeology-app.git
+cd archaeology-app
 flutter pub get
-
-```
-
-3. **Run the app:**
-```bash
 flutter run
-
-```
-
-4. **Build APK (Universal):**
-```bash
+flutter test
 flutter build apk --release
-
 ```
 
-5. **Release signing (optional):**
-   Create a keystore and describe it in `android/key.properties`
-   (this file is git-ignored and must never be committed):
+The APK is written to `build/app/outputs/flutter-apk/app-release.apk`.
+
+### Optional release signing
+
+Create a keystore and describe it in `android/key.properties`. This file is git-ignored and must never be committed:
+
 ```properties
 storePassword=<keystore password>
 keyPassword=<key password>
 keyAlias=upload
 storeFile=<absolute path to upload-keystore.jks>
 ```
-   When the file is present, release builds are signed with it;
-   otherwise they fall back to the debug key for local runs only.
 
-## 👥 Team
+When valid signing properties are present, release builds use that keystore. Without them, the Android build configuration falls back to the local debug key.
 
-* **Özcan Orhan Demirci** - *Lead Developer & Architecture*
-* **Berkay Gülbeyaz** - *Content Strategy & Research*
+## Architecture
 
-## ⚖️ License & Copyright
+`MyApp` owns the application state and exposes it through `AppStateProvider`, an **InheritedWidget**. No Bloc or Provider package is used. The site registry lazily constructs detailed `SiteData` through per-site functions; lightweight metadata supplies the site list, search and region filters.
 
-**© 2026 Özcan Orhan Demirci**
+`shared_preferences` saves preferences and favorites. `url_launcher` opens the About screen's external GitHub and LinkedIn buttons. Reading the guide works offline; external profile links require connectivity.
 
-All rights reserved.
+```text
+lib/
+├── main.dart                         # Startup, state ownership and themes
+├── core/
+│   ├── models.dart                   # Site, content and timeline models
+│   └── utils.dart                    # Timeline selection and image viewer
+├── data/
+│   ├── localization.dart            # English and Turkish strings
+│   ├── site_registry.dart           # On-demand site data builders
+│   ├── sites.dart                   # Site metadata and regions
+│   └── sites/                       # 21 site content files
+├── screens/
+│   ├── about_screen.dart
+│   ├── favorites_screen.dart
+│   ├── glossary_screen.dart
+│   ├── home_screen.dart
+│   ├── settings_screen.dart
+│   ├── splash_screen.dart           # Main menu
+│   └── universal_site_screen.dart   # Shared site detail screen
+├── state/
+│   └── state.dart                   # AppStateProvider
+└── widgets/
+    ├── app_bar.dart                 # Shared app bar
+    ├── app_clickable.dart           # Tap feedback wrapper
+    ├── app_drawer.dart              # Navigation drawer
+    ├── site_widgets.dart            # Content and analysis blocks
+    └── timeline.dart                # Horizontal period navigation
+```
 
-This project was developed as a graduation project for the **Bakircay University Management Information Systems** department.
-The source code is published for **showcase and academic review purposes only**.
-Unauthorized copying, modification, distribution, or commercial use of this software is strictly prohibited.
+Tests in `test/` check:
 
----
+- **Data integrity:** 21-site registry coverage, both languages, region labels, content structure, timeline targets and bundled image paths.
+- **App startup and preferences:** menu startup, language retention and theme mode storage.
+- **Region filtering:** filtering to the Aegean and returning to all sites.
+- **Drawer navigation:** replacing destination screens without accumulating routes.
+- **Timeline selection:** choosing the period from content positions, including entries without a target block.
 
-### 📚 References & Acknowledgments
+## Team
 
-* **Google. (2025). Android Studio Documentation. Android Developers.
-* **Google LLC. (2025). Flutter Documentation: Build apps for any screen. Flutter.dev.
-* **Google. (2025). Dart Programming Language Specification. dart.dev.
-* **Google. (2024). Material Design 3. M3.material.io.
-* **Schneider, C., Fuller, M. A., Valacich, J. S., & George, J. F. (2020). Information Systems Project Management: A Process Approach (2nd ed.). Prospect Press.
-* **Republic of Turkey Ministry of Culture and Tourism. (2025). Archaeological Sites. GoTurkey. From: https://goturkiye.com/
-* **Austrian Archaeological Institute (ÖAI). (2025). General Stratigraphic Analysis and Research. Austrian Academy of Sciences. From: https://www.oeaw.ac.at/en/oeai/home
-* **German Archaeological Institute (DAI). (2025). Archaeological Excavations and Research in Turkey. From https://www.dainst.org/en/
+| Contributor | Role |
+| --- | --- |
+| Özcan Orhan Demirci | Lead Developer & Architect |
+| Berkay Gülbeyaz | Archaeological Content & Research |
+
+## References
+
+- Google. (2025). [Android Studio Documentation](https://developer.android.com/studio/intro). Android Developers.
+- Google LLC. (2025). [Flutter Documentation: Build apps for any screen](https://docs.flutter.dev/).
+- Google. (2025). [Dart Programming Language Specification](https://dart.dev/resources/language/spec).
+- Google. (2024). [Material Design 3](https://m3.material.io/).
+- Schneider, C., Fuller, M. A., Valacich, J. S., & George, J. F. (2020). *Information Systems Project Management: A Process Approach* (2nd ed.). Prospect Press.
+- Republic of Turkey Ministry of Culture and Tourism. (2025). Archaeological Sites. [GoTürkiye](https://goturkiye.com/).
+- Austrian Archaeological Institute (ÖAI). (2025). General Stratigraphic Analysis and Research. Austrian Academy of Sciences. [ÖAI](https://www.oeaw.ac.at/en/oeai/home).
+- German Archaeological Institute (DAI). (2025). Archaeological Excavations and Research in Turkey. [DAI](https://www.dainst.org/en/).
+
+## License
+
+Copyright (c) 2026 Özcan Orhan Demirci. **All rights reserved.** The source is published for academic showcase and review; copying, modification, distribution or commercial use requires written permission. See [LICENSE](LICENSE).
+
+## Contact
+
+[mail@ozcanorhandemirci.com](mailto:mail@ozcanorhandemirci.com)
